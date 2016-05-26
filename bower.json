@@ -1,11 +1,14 @@
 {
-  "name": "BootstrapFileField",
+  "name": "bootstrap-file-field",
   "authors": [
     "Anis Ahmad <anis.programmer@gmail.com>"
   ],
-  "description": "jQuery plugin to enhance file fields with modern features and design, without ajax upload.",
-  "main": "src/js/bootstrap_file_field.js, src/css/bootstrap_file_field.css",
-  "moduleType": [],
+  "description": "jQuery plugin to enhance file fields with modern features and bootstrap design, without ajax upload.",
+  "main": [
+    "src/js/bootstrap_file_field.js",
+    "src/css/bootstrap_file_field.css"
+  ],
+  "moduleType": "globals",
   "keywords": [
     "jquery-plugin",
     "bootstrap",

@@ -1,4 +1,4 @@
-/*! BootstrapFileField v0.1 | (c) ajaxray.com | MIT License
+/*! BootstrapFileField v1.0.0 | (c) ajaxray.com | MIT License
  * https://github.com/ajaxray/bootstrap-file-field
  **/
 (function( $ ) {

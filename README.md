@@ -1,26 +1,37 @@
 Bootstrap File Field
 ============================
 
-jQuery plugin to enhance file fields with modern features and design, **without ajax upload**. 
-Use smart file upload features (e,g, restricting size and file type, showing selected file list etc.)
-with generic form submit workflow.
+jQuery plugin to enhance file fields with modern features and bootstrap design.
+Smart file selection features (e,g, restricting size and file type, showing selected file list etc.)
+with generic form submission process, **no ajax upload**.
+
+What it does?
+------------------
+
+* Display file upload filed like Bootstrap buttons
+* Can restrict file types, don't allow wrong file types
+* Can set maximum and/or minimum file size limit 
+* Can set maximum and/or minimum total size limit (for multiple selection)
+* Can set maximum and/or minimum number of files can be selected (for multiple selection)
+* Display user friendly errors if any restriction prevented file selection
+* Display name/list of selected files (if no error)  
 
 ![Screenshot](/demo/bootstrap_file_field.jpg "Bootstrap FIle Field Screenshot")
-
 
 Install
 ------------------
 **Using bower** 
 
-*Not yet published to bower*
+`bower install bootstrap-file-field --save`
 
-**Manual Download**
+**Manual Download**  
+
 [Download The Zip](https://github.com/ajaxray/bootstrap-file-field/archive/master.zip) file and extract to appropriate directory. 
 
 Then Include the plugin css file
-`<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap_file_field//src/css/bootstrap_file_field.css">`  
+`<link rel="stylesheet" type="text/css" href="path/to/plugin-dir/src/css/bootstrap_file_field.css">`  
 And the JS file  
-`<script type="text/javascript" src="../bower_components/bootstrap_file_field/src/js/bootstrap_file_field.js"></script>`
+`<script type="text/javascript" src="path/to/plugin-dir/src/js/bootstrap_file_field.js"></script>`
 
 Remember to include jQuery js and Bootstrap css files before plugin files. Also, the file paths may have to be adjusted based on your local setup.
 
