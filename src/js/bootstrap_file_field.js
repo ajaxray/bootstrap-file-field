@@ -1,3 +1,6 @@
+/*! BootstrapFileField v0.1 | (c) ajaxray.com | MIT License
+ * https://github.com/ajaxray/bootstrap-file-field
+ **/
 (function( $ ) {
 
     $.fn.smartFileField = function(options) {
@@ -37,7 +40,7 @@
         };
 
         this.filter( ":file" ).each(function() {
-            var btnClass = settings.btnClass;
+            var btnClass     = $(this).data('btn-class') ||settings.btnClass;
             var label        = $(this).data('label') || settings.label;
 
             // Restrictions
@@ -120,5 +123,7 @@
         return this;
 
     };
+
+    $(':file[data-field-type="bootstrap-file-filed"]').smartFileField({});
 
 }( jQuery ));

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Anis Ahmad <anis.programmer@gmail.com>">
 
-    <title>Narrow Jumbotron Template for Bootstrap</title>
+    <title>Bootstrap File Field (jQuery Plugin)</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
@@ -29,31 +29,22 @@
 <div class="container">
     <div class="header">
         <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="https://github.com/ajaxray/bootstrap-file-field">Home</a></li>
+            <li class="active"><a href="#">Demo</a></li>
         </ul>
-        <h3 class="text-muted">Smart File Filed</h3>
+        <h3 class="text-muted">Bootstrap File Filed</h3>
     </div>
 
     <div class="col-md-12">
-        <h3>Edit your profile</h3>
+        <h3>Bootstrap File Field samples</h3>
 
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p class="lead">
+            This page has examples of various ways of using and configuring this plugin.
+        </p>
+        <p class="text-info"><strong>Note:</strong> On server end, you'll get the files as generic form submission process.</p>
 
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
-                <label for="email" class="col-sm-3 control-label">Email</label>
-                <div class="col-sm-9">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="name" class="col-sm-3 control-label">Full Name</label>
-                <div class="col-sm-9">
-                    <input type="password" class="form-control" id="name" placeholder="Full Name">
-                </div>
-            </div>
+        <form role="form" enctype="application/x-www-form-urlencoded">
+
             <!--<div class="form-group">-->
                 <!--<label for="photo" class="col-sm-3 control-label">Upload photos</label>-->
                 <!--<div class="col-sm-9 fileinput">-->
@@ -65,46 +56,140 @@
                 <!--</div>-->
             <!--</div>-->
             <div class="form-group">
-                <label for="photo2[]" class="col-sm-3 control-label">Upload photos</label>
-                <div class="col-sm-9">
-                    <input type="file" name="photo2[]" class="smart-file" multiple
-                           data-label="Select Image Files"
-                           data-btn-class="btn-primary"
-                           data-file-types="image/jpeg,image/png">
-
-                    <p><small>You can select multiple files. Only jpeg, png and gif images are acceptable.</small></p>
-                </div>
+                <label for="sample1">Initiate with data attribute, no customization</label>
+                    <p>
+                        <code>&lt;input type="file" data-field-type="bootstrap-file-filed" name="sample1"&gt;</code>
+                    </p>
+                    <input type="file" data-field-type="bootstrap-file-filed" name="sample1">
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-9">
-                    <button type="submit" class="btn btn-default">Update</button>
-                </div>
+                <label for="sample2">Initiate with data attribute, with custom label, class and file types.</label>
+                <p>
+                    <code>&lt;input type="file" name="sample2" data-field-type="bootstrap-file-filed" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-label="Select Image Files" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-btn-class="btn-primary" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-file-types="image/jpeg,image/png"&gt;</code>
+                </p>
+                <input type="file" name="sample2"
+                       data-field-type="bootstrap-file-filed"
+                       data-label="Select Image Files"
+                       data-btn-class="btn-primary"
+                       data-file-types="image/jpeg,image/png">
+            </div>
+            <div class="form-group">
+                <label for="sample3">Initiate with javascript by class/selector.</label>
+
+                <p>
+                    HTML : <br />
+                    <code>&lt;input type="file" class="smart-filed" name="sample3[]" multiple&gt;</code><br>
+                    JavaScript <br />
+                    <code>
+                    $('.smart-file').smartFileField({ <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;maxNumFiles: 2, <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;fileTypes: 'image/jpeg,image/png', <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;maxFileSize: 80000 <span class="text-muted">// 80kb in bytes</span> <br />
+                    });
+                    </code>
+
+                </p>
+                <input type="file" name="sample3[]" class="smart-file" multiple>
+            </div>
+            <div class="form-group">
+                <label for="sample4">Overwriting initial (by javascript) configuration using data attribute</label>
+                <p>
+                    This field has already been initiated with previous field (as it has class <code>smart-file</code>).
+                    Now we'll add and modify some of customization options using data attributes.
+                </p>
+                <p>
+                    <code>
+                        &lt;input type="file" name="sample4[]" class="smart-file" multiple <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-label="Select PDF Documents" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-btn-class="btn-primary" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-file-types="application/pdf"&gt;
+                    </code>
+                </p>
+                <input type="file" name="sample4[]" class="smart-file" multiple
+                       data-label="Select PDF Documents"
+                       data-btn-class="btn-primary"
+                       data-file-types="application/pdf">
+
+                <p><small><b>Help message:</b> You can select multiple files. Only PDF files under 80kb are acceptable.</small></p>
+
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default" disabled>Submit</button>
             </div>
         </form>
 
     </div>
 
+    <p class="clearfix"></p><hr>
+
     <div class="row marketing">
-        <div class="col-lg-6">
-            <h4>Subheading</h4>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-            <h4>Subheading</h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
-            <h4>Subheading</h4>
-            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
+        <div class="col-md 12">
+            <h4>Configuration Options</h4>
 
-        <div class="col-lg-6">
-            <h4>Subheading</h4>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-            <h4>Subheading</h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-            <h4>Subheading</h4>
-            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            <table class="table table-bordered">
+                <tr>
+                    <th>What to configure</th>
+                    <th>JS Settings Option</th>
+                    <th>Data attribute</th>
+                    <th>Default</th>
+                </tr>
+                <tr>
+                    <td>Button label</td>
+                    <td>label</td>
+                    <td>data-label</td>
+                    <td>Select File</td>
+                </tr>
+                <tr>
+                    <td>Button class</td>
+                    <td>btnClass</td>
+                    <td>data-btn-class</td>
+                    <td>btn-default</td>
+                </tr>
+                <tr>
+                    <td>
+                        Allowed file types by <a href="https://www.sitepoint.com/web-foundations/mime-types-complete-list/" target="_blank">mime type</a>
+                        <br>(comma separated values)
+                    </td>
+                    <td>fileTypes</td>
+                    <td>data-file-types</td>
+                    <td><em>Ignored</em></td>
+                </tr>
+                <tr>
+                    <td>Maximum file size (in byte)</td>
+                    <td>maxFileSize</td>
+                    <td>data-max-file-size</td>
+                    <td><em>Ignored</em></td>
+                </tr>
+                <tr>
+                    <td>Minimum file size (in byte)</td>
+                    <td>minFileSize</td>
+                    <td>data-min-file-size</td>
+                    <td><em>Ignored</em></td>
+                </tr>
+                <tr>
+                    <td>Maximum total file size <sup>M</sup></td>
+                    <td>maxTotalSize</td>
+                    <td>data-max-total-size</td>
+                    <td><em>Ignored</em></td>
+                </tr>
+                <tr>
+                    <td>Maximum number of files <sup>M</sup></td>
+                    <td>maxNumFiles</td>
+                    <td>data-max-num-files</td>
+                    <td><em>Ignored</em></td>
+                </tr>
+                <tr>
+                    <td>Minimum number of files <sup>M</sup></td>
+                    <td>minNumFiles</td>
+                    <td>data-min-num-files</td>
+                    <td><em>Ignored</em></td>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -122,8 +207,8 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.smart-file').smartFileField({
-            label: 'Select Profile Images',
-            fileTypes: 'image/jpeg,image/png,image/gif',
+            maxNumFiles: 2,
+            fileTypes: 'image/jpeg,image/png',
             maxFileSize: 800000 // 80kb in bytes
         });
     });
