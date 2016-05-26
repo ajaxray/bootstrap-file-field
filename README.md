@@ -8,11 +8,12 @@ with generic form submission process, **no ajax upload**.
 What it does?
 ------------------
 
-* Display file upload filed like Bootstrap buttons
+* Display file upload field like Bootstrap buttons
 * Can restrict file types, don't allow wrong file types
 * Can set maximum and/or minimum file size limit 
 * Can set maximum and/or minimum total size limit (for multiple selection)
 * Can set maximum and/or minimum number of files can be selected (for multiple selection)
+* All restrictions are checked on client side using HTML5 File API
 * Display user friendly errors if any restriction prevented file selection
 * Display name/list of selected files (if no error)  
 
@@ -40,12 +41,12 @@ How to use
 ------------------
 
 **Initiate with data attribute, no customization**  
-`<input type="file" data-field-type="bootstrap-file-filed" name="sample1">`
+`<input type="file" data-field-type="bootstrap-file-field" name="sample1">`
 
 **Initiate with data attribute, with custom label, class and file types**  
 ```
 <input type="file" name="sample2"
-       data-field-type="bootstrap-file-filed"
+       data-field-type="bootstrap-file-field"
        data-label="Select Image Files"
        data-btn-class="btn-primary"
        data-file-types="image/jpeg,image/png">`
@@ -53,7 +54,7 @@ How to use
 
 **Initiate with javascript by class/selector**  
 HTML :  
-`<input type="file" class="smart-filed" name="sample3[]" multiple>`  
+`<input type="file" class="smart-field" name="sample3[]" multiple>`  
 JavaScript :  
 ```
 $('.smart-file').smartFileField({  
@@ -99,7 +100,7 @@ Configuration options
 | Allowed file types by [mime type](https://www.sitepoint.com/web-foundations/mime-types-complete-list/) (comma separated values) | fileTypes | data-file-types | *Ignored* |    
 | Maximum file size (in byte) | maxFileSize | data-max-file-size | *Ignored* |    
 | Minimum file size (in byte) | minFileSize | data-min-file-size | *Ignored* |    
-| Maximum total file size (M) | axTotalSize | ata-max-total-size | *Ignored* |    
+| Maximum total file size (M) | maxTotalSize | data-max-total-size | *Ignored* |    
 | Maximum number of files (M) | maxNumFiles | data-max-num-files | *Ignored* |    
 | Minimum number of files (M) | minNumFiles | data-min-num-files | *Ignored* |
 (M) = For multiple file selection only
