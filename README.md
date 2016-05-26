@@ -5,6 +5,9 @@ jQuery plugin to enhance file fields with modern features and design, **without 
 Use smart file upload features (e,g, restricting size and file type, showing selected file list etc.)
 with generic form submit workflow.
 
+![Screenshot](/demo/bootstrap_file_field.jpg "Bootstrap FIle Field Screenshot")
+
+
 Install
 ------------------
 **Using bower** 
