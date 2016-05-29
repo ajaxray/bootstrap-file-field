@@ -3,7 +3,7 @@
  **/
 (function( $ ) {
 
-    $.fn.smartFileField = function(options) {
+    $.fn.bootstrapFileField = function(options) {
 
         var settings = $.extend({
             // Presentation
@@ -28,7 +28,7 @@
             fileNameList.empty();
 
             for (var i in files) {
-                if (files.hasOwnProperty(i)) {
+                if (files.hasOwnProperty(i) && $.isNumeric(i)) {
                     fileNameList.append('<li class="text-success">&check; ' + files[i].name + '</li>');
                 }
             }
@@ -124,6 +124,6 @@
 
     };
 
-    $(':file[data-field-type="bootstrap-file-filed"]').smartFileField({});
+    $(':file[data-field-type="bootstrap-file-filed"]').bootstrapFileField({});
 
 }( jQuery ));

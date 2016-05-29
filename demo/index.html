@@ -42,6 +42,7 @@
             This page has examples of various ways of using and configuring this plugin.
         </p>
         <p class="text-info"><strong>Note:</strong> On server end, you'll get the files as generic form submission process.</p>
+        <hr>
 
         <form role="form" enctype="application/x-www-form-urlencoded">
 
@@ -81,10 +82,10 @@
 
                 <p>
                     HTML : <br />
-                    <code>&lt;input type="file" class="smart-filed" name="sample3[]" multiple&gt;</code><br>
+                    <code>&lt;input type="file" class="smart-file" name="sample3[]" multiple&gt;</code><br>
                     JavaScript <br />
                     <code>
-                    $('.smart-file').smartFileField({ <br />
+                    $('.smart-file').bootstrapFileField({ <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;maxNumFiles: 2, <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;fileTypes: 'image/jpeg,image/png', <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;maxFileSize: 80000 <span class="text-muted">// 80kb in bytes</span> <br />
@@ -130,6 +131,12 @@
 
         <div class="col-md 12">
             <h4>Configuration Options</h4>
+
+            <p>Also you can activate plugin on a file field by adding attribute
+                <code>data-field-type="bootstrap-file-field"</code> or using javascript (see examples above).
+                Then you can use the following settings keys (as parameter to javascript activation function)
+                or data attributes to configure your file field.
+            </p>
 
             <table class="table table-bordered">
                 <tr>
@@ -190,6 +197,7 @@
                     <td><em>Ignored</em></td>
                 </tr>
             </table>
+            <p><sup>M</sup> = For multiple file selection only</p>
         </div>
     </div>
 
@@ -206,7 +214,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.smart-file').smartFileField({
+        $('.smart-file').bootstrapFileField({
             maxNumFiles: 2,
             fileTypes: 'image/jpeg,image/png',
             maxFileSize: 800000 // 80kb in bytes

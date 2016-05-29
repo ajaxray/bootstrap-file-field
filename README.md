@@ -17,7 +17,7 @@ What it does?
 * Display user friendly errors if any restriction prevented file selection
 * Display name/list of selected files (if no error)  
 
-![Screenshot](/demo/bootstrap_file_field.jpg "Bootstrap FIle Field Screenshot")
+![Screenshot](/demo/bootstrap_file_field.jpg "Bootstrap File Field Screenshot")
 
 Install
 ------------------
@@ -27,9 +27,9 @@ Install
 
 **Manual Download**  
 
-[Download The Zip](https://github.com/ajaxray/bootstrap-file-field/archive/master.zip) file and extract to appropriate directory. 
+[Download The Zip](https://github.com/ajaxray/bootstrap-file-field/archive/master.zip) file and extract to appropriate directory.  
 
-Then Include the plugin css file
+Then Include the plugin css file  
 `<link rel="stylesheet" type="text/css" href="path/to/plugin-dir/src/css/bootstrap_file_field.css">`  
 And the JS file  
 `<script type="text/javascript" src="path/to/plugin-dir/src/js/bootstrap_file_field.js"></script>`
@@ -54,16 +54,16 @@ How to use
 
 **Initiate with javascript by class/selector**  
 HTML :  
-`<input type="file" class="smart-field" name="sample3[]" multiple>`  
+`<input type="file" class="smart-file" name="sample3[]" multiple>`  
 JavaScript :  
 ```
-$('.smart-file').smartFileField({  
+$('.smart-file').bootstrapFileField({   
     maxNumFiles: 2,  
     fileTypes: 'image/jpeg,image/png',  
     maxFileSize: 80000 // 80kb in bytes  
 });
 ```
-**Overwriting initial (by javascript) configuration using data attribute**
+**Overwriting configuration using data attribute**
 
 Let's assume, this field has already been initiated with previous example (as it has class <code>smart-file</code>).
 Now we'll add and modify some of customization options using data attributes.
@@ -105,5 +105,7 @@ Configuration options
 | Minimum number of files (M) | minNumFiles | data-min-num-files | *Ignored* |
 (M) = For multiple file selection only
 
+Also you can activate plugin on a file field by adding attribute 
+`data-field-type="bootstrap-file-field"` 
 
 Inspired by: http://www.abeautifulsite.net/whipping-file-inputs-into-shape-with-bootstrap-3/
