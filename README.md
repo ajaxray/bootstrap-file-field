@@ -17,6 +17,8 @@ What it does?
 * Display user friendly errors if any restriction prevented file selection
 * Display name/list of selected files (if no error)  
 
+Check [this live demo](http://ajaxray.com/demo/BootstrapFileField/demo/), it's usability + simplicity!
+
 ![Screenshot](/demo/bootstrap_file_field.jpg "Bootstrap File Field Screenshot")
 
 Install
@@ -75,7 +77,7 @@ Now we'll add and modify some of customization options using data attributes.
     data-file-types="application/pdf">
 ```
 
-Check the `demo/index.html` file (in downloaded folder) to see all the above examples in action.
+Check the `demo/index.html` file (in downloaded source) or [this live demo](http://ajaxray.com/demo/BootstrapFileField/demo/) to see all the above examples in action.
 
 Supported Restrictions
 -------------------------
@@ -93,11 +95,16 @@ You can add restrictions based on -
 Configuration options
 --------------------------------
 
+You can activate plugin on a file field by adding attribute
+`data-field-type="bootstrap-file-field"` or using javascript (see examples above).
+Then you can use the following settings keys (as parameter to javascript activation function)
+or data attributes to configure your file field.
+
 | What to configure| JS Settings Option| Data attribute| Default|
 | --- | --- | --- | --- |
 | Button label | label | data-label | Select File|
 | Button class | btnClass | data-btn-class | btn-default |    
-| Allowed file types by [mime type](https://www.sitepoint.com/web-foundations/mime-types-complete-list/) (comma separated values) | fileTypes | data-file-types | *Ignored* |    
+| Allowed file types  by [mime type](https://www.sitepoint.com/web-foundations/mime-types-complete-list/) (comma separated values) | fileTypes | data-file-types | *Ignored* |    
 | Maximum file size (in byte) | maxFileSize | data-max-file-size | *Ignored* |    
 | Minimum file size (in byte) | minFileSize | data-min-file-size | *Ignored* |    
 | Maximum total file size (M) | maxTotalSize | data-max-total-size | *Ignored* |    
