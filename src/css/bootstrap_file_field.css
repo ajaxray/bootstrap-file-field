@@ -21,3 +21,32 @@
     cursor: inherit;
     display: block;
 }
+
+ul.fileList.thumbs {
+    clear: both;
+    overflow: auto;
+}
+ul.fileList.thumbs li {
+    float: left;
+    position: relative;
+    margin: 10px 10px 10px 0;
+}
+ul.fileList.thumbs li img.icon {
+    background-color: #ddd;
+}
+
+ul.fileList.thumbs li span.file-name {
+    position: absolute;
+    display: inline-block;
+    left: 22px;
+    top: 22px;
+    width: 56px;
+    overflow-wrap: break-word;
+    height: 60px;
+    font-size: 9px;
+    color: #666;
+}
+
+ul.fileList.thumbs li img:not(.icon)+span.file-name {
+    display: none;
+}

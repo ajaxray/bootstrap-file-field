@@ -112,7 +112,4 @@ or data attributes to configure your file field.
 | Minimum number of files (M) | minNumFiles | data-min-num-files | *Ignored* |
 (M) = For multiple file selection only
 
-Also you can activate plugin on a file field by adding attribute 
-`data-field-type="bootstrap-file-field"` 
-
 Inspired by: http://www.abeautifulsite.net/whipping-file-inputs-into-shape-with-bootstrap-3/
