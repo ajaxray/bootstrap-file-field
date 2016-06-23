@@ -3,7 +3,7 @@
   "authors": [
     "Anis Ahmad <anis.programmer@gmail.com>"
   ],
-  "description": "jQuery plugin to enhance file fields with modern features and bootstrap design, without ajax upload.",
+  "description": "jQuery plugin to enhance html file input to look like bootstrap button, showing image thumb and apply useful restrictions (e.g. file types, size, number of files etc.)",
   "main": [
     "src/js/bootstrap_file_field.js",
     "src/css/bootstrap_file_field.css"
