@@ -2,24 +2,25 @@ Bootstrap File Field
 ============================
 
 jQuery plugin to enhance file fields with modern features and bootstrap design.
-Smart file selection features (e,g, restricting size and file type, showing selected file list etc.)
-with generic form submission process, **no ajax upload**.
+Smart file selection features (e,g, showing thumbs, restricting size and file type etc.)
+while using generic form submission, **no ajax upload**.
 
 What it does?
 ------------------
 
 * Display file upload field like Bootstrap buttons
-* Can restrict file types, don't allow wrong file types
+* Can display preview thumbs of selected images
+* Can restrict file types - allow only configured mime types
 * Can set maximum and/or minimum file size limit 
-* Can set maximum and/or minimum total size limit (for multiple selection)
-* Can set maximum and/or minimum number of files can be selected (for multiple selection)
-* All restrictions are checked on client side using HTML5 File API
+* Can set maximum and/or minimum total size limit
+* Can set maximum and/or minimum number of files can be selected 
+* All restrictions are checked on client side using HTML5 File/FileList/FileReader APIs
 * Display user friendly errors if any restriction prevented file selection
-* Display name/list of selected files (if no error)  
+* Display name/list of selected files (if no error and preview is off)  
 
 Check [this live demo](http://ajaxray.com/demo/BootstrapFileField/demo/), it's usability + simplicity!
 
-![Screenshot](/demo/bootstrap_file_field.jpg "Bootstrap File Field Screenshot")
+![Screenshot](/demo/bootstrap-file-field-2.jpg "Bootstrap File Field Screenshot")
 
 Install
 ------------------
@@ -42,21 +43,35 @@ Remember to include jQuery js and Bootstrap css files before plugin files. Also,
 How to use
 ------------------
 
-**Initiate with data attribute, no customization**  
-`<input type="file" data-field-type="bootstrap-file-field" name="sample1">`
-
-**Initiate with data attribute, with custom label, class and file types**  
+**Initiating with data attribute, no customization**
 ```
-<input type="file" name="sample2"
-       data-field-type="bootstrap-file-field"
-       data-label="Select Image Files"
-       data-btn-class="btn-primary"
-       data-file-types="image/jpeg,image/png">`
+<input type="file" data-field-type="bootstrap-file-filed" name="sample1">
 ```
 
-**Initiate with javascript by class/selector**  
+**Showing image preview, setting custom label, class and file types. Allows multiple.**
+```
+<input type="file" name="sample3[]"    
+    data-field-type="bootstrap-file-filed"  
+    data-label="Select Image Files"  
+    data-btn-class="btn-primary"  
+    data-file-types="image/jpeg,image/png,image/gif"  
+    data-preview="on"  
+    multiple >
+```
+
+**Allow PDF files only. Preview off**
+```
+<input type="file" name="sample4[]"  
+    data-field-type="bootstrap-file-filed"  
+    data-label="Select PDF Files"  
+    data-file-types="application/pdf"  
+    multiple >
+```
+
+**Initiating with javascript by class/selector. Select at most 2 images below 80kb each**
+
 HTML :  
-`<input type="file" class="smart-file" name="sample3[]" multiple>`  
+`<input type="file" class="smart-file" name="sample3[]" multiple>`    
 JavaScript :  
 ```
 $('.smart-file').bootstrapFileField({   
@@ -65,19 +80,8 @@ $('.smart-file').bootstrapFileField({
     maxFileSize: 80000 // 80kb in bytes  
 });
 ```
-**Overwriting configuration using data attribute**
 
-Let's assume, this field has already been initiated with previous example (as it has class <code>smart-file</code>).
-Now we'll add and modify some of customization options using data attributes.
-
-```
-<input type="file" name="sample4[]" class="smart-file" multiple
-    data-label="Select PDF Documents"
-    data-btn-class="btn-primary"
-    data-file-types="application/pdf">
-```
-
-Check the `demo/index.html` file (in downloaded source) or [this live demo](http://ajaxray.com/demo/BootstrapFileField/demo/) to see all the above examples in action.
+Check the `demo/index.html` file (in downloaded source) or [this live demo](http://ajaxray.com/demo/BootstrapFileField/demo/) to see more examples in action (including all the above).
 
 Supported Restrictions
 -------------------------
@@ -102,14 +106,15 @@ or data attributes to configure your file field.
 
 | What to configure| JS Settings Option| Data attribute| Default|
 | --- | --- | --- | --- |
-| Button label | label | data-label | Select File|
+| Button label | label | data-label | Select File/Select Files |
 | Button class | btnClass | data-btn-class | btn-default |    
+| Preview thumb | preview | data-preview | off |    
 | Allowed file types  by [mime type](https://www.sitepoint.com/web-foundations/mime-types-complete-list/) (comma separated values) | fileTypes | data-file-types | *Ignored* |    
 | Maximum file size (in byte) | maxFileSize | data-max-file-size | *Ignored* |    
 | Minimum file size (in byte) | minFileSize | data-min-file-size | *Ignored* |    
 | Maximum total file size (M) | maxTotalSize | data-max-total-size | *Ignored* |    
 | Maximum number of files (M) | maxNumFiles | data-max-num-files | *Ignored* |    
 | Minimum number of files (M) | minNumFiles | data-min-num-files | *Ignored* |
-(M) = For multiple file selection only
+(M) = For multiple file selection 
 
 Inspired by: http://www.abeautifulsite.net/whipping-file-inputs-into-shape-with-bootstrap-3/

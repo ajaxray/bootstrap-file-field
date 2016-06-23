@@ -36,15 +36,16 @@
     </div>
 
     <div class="col-md-12">
-        <h3>Bootstrap File Field samples</h3>
+        <h3>Bootstrap File Field demo</h3>
 
         <p class="lead">
-            This page has examples of various ways of using and configuring this plugin.
+            Examples of using and configuring <i>Bootstrap File Field</i> in various ways.
         </p>
-        <p class="text-info"><strong>Note:</strong> On server end, you'll get the files as generic form submission process.</p>
+        <p class="text-info"><strong>Note:</strong> On server end, you'll receive the files with submitted form (with <code>enctype="multipart/form-data"</code>).
+            No ajax upload is being used.</p>
         <hr>
 
-        <form role="form" enctype="application/x-www-form-urlencoded">
+        <form role="form" enctype="multipart/form-data">
 
             <!--<div class="form-group">-->
                 <!--<label for="photo" class="col-sm-3 control-label">Upload photos</label>-->
@@ -56,30 +57,68 @@
                     <!--<ul class="list-unstyled fileList"></ul>-->
                 <!--</div>-->
             <!--</div>-->
+
             <div class="form-group">
-                <label for="sample1">Initiate with data attribute, no customization</label>
+                <label for="sample1">Example 1: Initiating with data attribute, no customization</label>
                     <p>
                         <code>&lt;input type="file" data-field-type="bootstrap-file-filed" name="sample1"&gt;</code>
                     </p>
                     <input type="file" data-field-type="bootstrap-file-filed" name="sample1">
             </div>
+
             <div class="form-group">
-                <label for="sample2">Initiate with data attribute, with image thumb, custom label, button class and file types.</label>
+                <label for="sample2">Example 2: Single Image file with preview.</label>
                 <p>
                     <code>&lt;input type="file" name="sample2" data-field-type="bootstrap-file-filed" <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;data-label="Select Image Files" <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;data-btn-class="btn-primary" <br />
-                        &nbsp;&nbsp;&nbsp;&nbsp;data-file-types="image/jpeg,image/png"&gt;</code>
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-preview="on" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-file-types="image/jpeg,image/png,image/gif"&gt;</code>
                 </p>
                 <input type="file" name="sample2"
                        data-field-type="bootstrap-file-filed"
+                       data-file-types="image/jpeg,image/png,image/gif"
+                       data-preview="on">
+            </div>
+
+            <div class="form-group">
+                <label for="sample3">Example 3: Showing image preview, setting custom label, class and file types. Allows multiple.</label>
+                <p>
+                    <code>&lt;input type="file" name="sample3[]" data-field-type="bootstrap-file-filed" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-label="Select Image Files" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-btn-class="btn-primary" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-file-types="image/jpeg,image/png,image/gif" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-preview="on" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;multiple &gt;
+                    </code>
+                </p>
+                <input type="file" name="sample3[]"
+                       data-field-type="bootstrap-file-filed"
                        data-label="Select Image Files"
                        data-btn-class="btn-primary"
-                       data-file-types="image/jpeg,image/png"
-                       data-preview="off">
+                       data-file-types="image/jpeg,image/png,image/gif"
+                       data-preview="on"
+                       multiple
+                >
             </div>
+
             <div class="form-group">
-                <label for="sample3">Initiate with javascript by class/selector.</label>
+                <label for="sample4">Example 4: Allow PDF files only. Preview off.</label>
+                <p>
+                    <code>&lt;input type="file" name="sample4[]" data-field-type="bootstrap-file-filed" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-label="Select PDF Files" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;data-file-types="application/pdf" <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;multiple &gt;
+                    </code>
+                </p>
+                <input type="file" name="sample4[]"
+                       data-field-type="bootstrap-file-filed"
+                       data-label="Select PDF Files"
+                       data-file-types="application/pdf"
+                       multiple
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="sample5">Example 5: Initiating with javascript by class/selector. Select at most 2 images below 80kb each.</label>
 
                 <p>
                     HTML : <br />
@@ -97,20 +136,20 @@
                 <input type="file" name="sample3[]" class="smart-file" multiple>
             </div>
             <div class="form-group">
-                <label for="sample4">Overwriting initial (by javascript) configuration using data attribute</label>
+                <label for="sample6">Example 6: Overwriting initial (by javascript) configuration using data attribute</label>
                 <p>
-                    This field has already been initiated with previous field (as it has class <code>smart-file</code>).
+                    This field has already been initiated with previous example (as it has class <code>smart-file</code>).
                     Now we'll add and modify some of customization options using data attributes.
                 </p>
                 <p>
                     <code>
-                        &lt;input type="file" name="sample4[]" class="smart-file" multiple <br />
+                        &lt;input type="file" name="sample6[]" class="smart-file" multiple <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;data-label="Select PDF Documents" <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;data-btn-class="btn-primary" <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;data-file-types="application/pdf"&gt;
                     </code>
                 </p>
-                <input type="file" name="sample4[]" class="smart-file" multiple
+                <input type="file" name="sample6[]" class="smart-file" multiple
                        data-label="Select PDF Documents"
                        data-btn-class="btn-primary"
                        data-file-types="application/pdf">
@@ -142,7 +181,7 @@
             <table class="table table-bordered">
                 <tr>
                     <th>What to configure</th>
-                    <th>JS Settings Option</th>
+                    <th>JS Settings key</th>
                     <th>Data attribute</th>
                     <th>Default</th>
                 </tr>
@@ -150,7 +189,10 @@
                     <td>Button label</td>
                     <td>label</td>
                     <td>data-label</td>
-                    <td>Select File</td>
+                    <td>
+                        Select File <br />
+                        Select Files <sup>M</sup>
+                    </td>
                 </tr>
                 <tr>
                     <td>Button class</td>
@@ -166,6 +208,12 @@
                     <td>fileTypes</td>
                     <td>data-file-types</td>
                     <td><em>Ignored</em></td>
+                </tr>
+                <tr>
+                    <td>Preview thumb</td>
+                    <td>preview</td>
+                    <td>data-preview</td>
+                    <td>off</td>
                 </tr>
                 <tr>
                     <td>Maximum file size (in byte)</td>
@@ -198,7 +246,7 @@
                     <td><em>Ignored</em></td>
                 </tr>
             </table>
-            <p><sup>M</sup> = For multiple file selection only</p>
+            <p><sup>M</sup> = For multiple file <selection></selection></p>
         </div>
     </div>
 
