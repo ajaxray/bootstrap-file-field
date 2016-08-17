@@ -90,76 +90,79 @@
             var maxNumFiles  = $(this).data('max-num-files') || settings.maxNumFiles;
             var minNumFiles  = $(this).data('min-num-files') || settings.minNumFiles;
 
-            var button = $('<span class="btn btn-file"></span>')
-                .addClass(btnClass)
-                .insertBefore(this);
-            var fileList = $('<ul class="list-unstyled small fileList"></ul>')
-                .insertAfter(button);
-            if('on' == preview) {
-                fileList.addClass('thumbs');
-            }
-
-            $(button).append(label);
-            $(button).append(this);
-
-            $(this).on('fileSelect', fileSelectHandler);
-            $(this).on('fileSelectionError', fileSelectionErrorHandler);
-
-            $(this).on('change', function(e) {
-                console.log(this.files);
-
-                // Check max file number
-                if(maxNumFiles && this.files.length > maxNumFiles) {
-                    $(this).trigger('fileSelectionError', [maxNumFiles +' files are allowed at most!', fileList]);
-                    return abort(this);
+            if ($(this).parent().hasClass('btn-file')) {
+                $(this).parent().next('.list-unstyled').empty();
+            } else {
+                var button = $('<span class="btn btn-file"></span>')
+                    .addClass(btnClass)
+                    .insertBefore(this);
+                var fileList = $('<ul class="list-unstyled small fileList"></ul>')
+                    .insertAfter(button);
+                if('on' == preview) {
+                    fileList.addClass('thumbs');
                 }
 
-                // Check min file number
-                if(minNumFiles && this.files.length < minNumFiles) {
-                    $(this).trigger('fileSelectionError', ['Have to select at least '+ minNumFiles +' files!', fileList]);
-                    return abort(this);
-                }
+                $(button).append(label);
+                $(button).append(this);
 
-                // Check max total size
-                if(maxTotalSize) {
-                    var totalSize = 0;
+                $(this).on('fileSelect', fileSelectHandler);
+                $(this).on('fileSelectionError', fileSelectionErrorHandler);
+
+                $(this).on('change', function(e) {
+                    console.log(this.files);
+
+                    // Check max file number
+                    if(maxNumFiles && this.files.length > maxNumFiles) {
+                        $(this).trigger('fileSelectionError', [maxNumFiles +' files are allowed at most!', fileList]);
+                        return abort(this);
+                    }
+
+                    // Check min file number
+                    if(minNumFiles && this.files.length < minNumFiles) {
+                        $(this).trigger('fileSelectionError', ['Have to select at least '+ minNumFiles +' files!', fileList]);
+                        return abort(this);
+                    }
+
+                    // Check max total size
+                    if(maxTotalSize) {
+                        var totalSize = 0;
+                        for (var x = 0; x < this.files.length; x++) {
+                            totalSize += this.files[x].size;
+                        }
+                        if(totalSize > maxTotalSize) {
+                            $(this).trigger('fileSelectionError', ['Total size of selected files should not exceed '+ maxTotalSize +' byte!', fileList]);
+                            return abort(this);
+                        }
+                    }
+
+                    // Check file-wise restrictions
                     for (var x = 0; x < this.files.length; x++) {
-                        totalSize += this.files[x].size;
-                    }
-                    if(totalSize > maxTotalSize) {
-                        $(this).trigger('fileSelectionError', ['Total size of selected files should not exceed '+ maxTotalSize +' byte!', fileList]);
-                        return abort(this);
-                    }
-                }
 
-                // Check file-wise restrictions
-                for (var x = 0; x < this.files.length; x++) {
+                        var file = this.files[x];
 
-                    var file = this.files[x];
+                        // Check file type
+                        if(fileTypes && fileTypes.indexOf(file.type) < 0) {
+                            $(this).trigger('fileSelectionError', [file.name +' : 您选择的文件类型不支持!', fileList]);
+                            return abort(this);
+                        }
 
-                    // Check file type
-                    if(fileTypes && fileTypes.indexOf(file.type) < 0) {
-                        $(this).trigger('fileSelectionError', [file.name +' : File type is not allowed!', fileList]);
-                        return abort(this);
-                    }
+                        // Check max size
+                        if(maxFileSize && file.size > maxFileSize) {
+                            $(this).trigger('fileSelectionError', [file.name +' : Exceeding maximum allowed file size!', fileList]);
+                            return abort(this);
+                        }
 
-                    // Check max size
-                    if(maxFileSize && file.size > maxFileSize) {
-                        $(this).trigger('fileSelectionError', [file.name +' : Exceeding maximum allowed file size!', fileList]);
-                        return abort(this);
+                        // Check min size
+                        if(minFileSize && file.size < minFileSize) {
+                            $(this).trigger('fileSelectionError', [file.name +' : Smaller than minimum allowed file size!', fileList]);
+                            return abort(this);
+                        }
+
                     }
 
-                    // Check min size
-                    if(minFileSize && file.size < minFileSize) {
-                        $(this).trigger('fileSelectionError', [file.name +' : Smaller than minimum allowed file size!', fileList]);
-                        return abort(this);
-                    }
-
-                }
-
-                $(this).trigger('fileSelect', [this.files, fileList]);
-            });
-
+                    $(this).trigger('fileSelect', [this.files, fileList]);
+                });
+            }
         });
 
         return this;
